@@ -1,0 +1,51 @@
+name: SolaEver Explorer Build Check
+
+on:
+  push:
+    branches: [ "main", "master" ] # 본인의 메인 브랜치명에 맞춰 수정하세요.
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20 # 현재 서버와 동일한 버전
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9 # 또는 package.json에 명시된 버전
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Project
+        run: pnpm build
+        env:
+          NEXT_TELEMETRY_DISABLED: 1
+          # Sentry 관련 빌드 에러 방지를 위한 더미 값 (필요 시)
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }} 
+          # 빌드 시점에 필요한 환경 변수가 있다면 여기에 추가하세요.
+          NEXT_PUBLIC_MAINNET_RPC_URL: "http://localhost:8899"
