@@ -9,7 +9,7 @@ export function SolBalanceChangesCard({ balanceChanges }: { balanceChanges: SolB
     return (
         <div className="card">
             <div className="card-header">
-                <h3 className="card-header-title">SOL Balance Changes</h3>
+                <h3 className="card-header-title">SLE Balance Changes</h3>
             </div>
             <div className="e-mb-0 e-overflow-x-auto">
                 <table className="table table-sm table-nowrap card-table">
@@ -17,8 +17,8 @@ export function SolBalanceChangesCard({ balanceChanges }: { balanceChanges: SolB
                         <tr>
                             <th className="text-muted">#</th>
                             <th className="text-muted">Address</th>
-                            <th className="text-muted">Change (SOL)</th>
-                            <th className="text-muted">Post Balance (SOL)</th>
+                            <th className="text-muted">Change (SLE)</th>
+                            <th className="text-muted">Post Balance (SLE)</th>
                         </tr>
                     </thead>
                     <tbody>

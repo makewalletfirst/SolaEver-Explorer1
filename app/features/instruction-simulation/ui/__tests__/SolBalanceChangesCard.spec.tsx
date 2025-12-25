@@ -45,7 +45,7 @@ describe('SolBalanceChangesCard', () => {
 
         render(<SolBalanceChangesCard balanceChanges={balanceChanges} />);
 
-        expect(screen.getByText('SOL Balance Changes')).toBeInTheDocument();
+        expect(screen.getByText('SLE Balance Changes')).toBeInTheDocument();
     });
 
     it('should render table headers', () => {
@@ -55,8 +55,8 @@ describe('SolBalanceChangesCard', () => {
 
         expect(screen.getByText('#')).toBeInTheDocument();
         expect(screen.getByText('Address')).toBeInTheDocument();
-        expect(screen.getByText('Change (SOL)')).toBeInTheDocument();
-        expect(screen.getByText('Post Balance (SOL)')).toBeInTheDocument();
+        expect(screen.getByText('Change (SLE)')).toBeInTheDocument();
+        expect(screen.getByText('Post Balance (SLE)')).toBeInTheDocument();
     });
 
     it('should render single balance change', () => {

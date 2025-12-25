@@ -3,6 +3,7 @@ import { HumanizeDuration, HumanizeDurationLanguage } from 'humanize-duration-ts
 
 // Switch to web3 constant when web3 updates superstruct
 export const LAMPORTS_PER_SOL = 1_000_000_000;
+export const SLE_SYMBOL = 'SLE';
 export const MICRO_LAMPORTS_PER_LAMPORT = 1_000_000;
 
 export const NUM_TICKS_PER_SECOND = 160;

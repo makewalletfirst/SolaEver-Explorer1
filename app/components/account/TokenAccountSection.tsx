@@ -377,7 +377,7 @@ function TokenAccountCard({ account, info }: { account: Account; info: TokenAcco
 
     useEffect(() => {
         if (info.isNative) {
-            setSymbol('SOL');
+            setSymbol('SLE');
         } else {
             setSymbol(tokenInfo?.symbol);
         }
@@ -440,7 +440,7 @@ function TokenAccountCard({ account, info }: { account: Account; info: TokenAcco
                 </tr>
                 {info.rentExemptReserve && (
                     <tr>
-                        <td>Rent-exempt reserve (SOL)</td>
+                        <td>Rent-exempt reserve (SLE)</td>
                         <td className="text-lg-end">
                             <>
                                 ◎

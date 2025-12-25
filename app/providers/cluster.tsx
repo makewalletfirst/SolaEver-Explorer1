@@ -72,7 +72,6 @@ const StateContext = createContext<State | undefined>(undefined);
 const DispatchContext = createContext<Dispatch | undefined>(undefined);
 
 const WHITELISTED_RPCS = [
-    // Used for solana.com live code example
     'engine.mirror.ad',
 ];
 
@@ -102,7 +101,6 @@ export function ClusterProvider({ children }: ClusterProviderProps) {
     const pathname = usePathname();
     const router = useRouter();
 
-    // Remove customUrl param if dev setting is disabled
     useEffect(() => {
         if (!enableCustomUrl && searchParams?.has('customUrl')) {
             const newSearchParams = new URLSearchParams();
@@ -117,7 +115,6 @@ export function ClusterProvider({ children }: ClusterProviderProps) {
         }
     }, [enableCustomUrl]); // eslint-disable-line react-hooks/exhaustive-deps
 
-    // Reconnect to cluster when params change
     useEffect(() => {
         updateCluster(dispatch, cluster, customUrl);
     }, [cluster, customUrl]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -139,7 +136,6 @@ async function updateCluster(dispatch: Dispatch, cluster: Cluster, customUrl: st
     });
 
     try {
-        // validate url
         new URL(customUrl);
 
         const transportUrl = clusterUrl(cluster, customUrl);
@@ -155,8 +151,6 @@ async function updateCluster(dispatch: Dispatch, cluster: Cluster, customUrl: st
             cluster,
             clusterInfo: {
                 epochInfo,
-                // These are incorrectly typed as unknown
-                // See https://github.com/solana-labs/solana-web3.js/issues/1389
                 epochSchedule: epochSchedule as EpochSchedule,
                 firstAvailableBlock: firstAvailableBlock as bigint,
             },

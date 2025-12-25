@@ -16,9 +16,9 @@ const SearchBar = dynamic(() => import('@components/SearchBar'), {
 });
 
 export const metadata: Metadata = {
-    description: 'Inspect transactions, accounts, blocks, and more on the Solana blockchain',
+    description: 'SolaEver Mainnet Explorer',
     manifest: '/manifest.json',
-    title: 'Explorer | Solana',
+    title: 'SolaEver Mainnet Explorer',
 };
 
 export const viewport: Viewport = {

@@ -54,7 +54,7 @@ export function WithdrawDetailsCard(props: {
             </tr>
 
             <tr>
-                <td>Withdraw Amount (SOL)</td>
+                <td>Withdraw Amount (SLE)</td>
                 <td className="text-lg-end">
                     <SolBalance lamports={info.lamports} />
                 </td>
